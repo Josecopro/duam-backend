@@ -1,0 +1,90 @@
+{
+  "private": [
+    {
+      "name": "Universidad EAN",
+      "url": "https://www.universidadean.edu.co/"
+    },
+    {
+      "name": "Universidad Antonio Nariño",
+      "url": "https://www.uan.edu.co/"
+    },
+    {
+      "name": "Fundación Universitaria Del Area Andina",
+      "url": "https://www.areandina.edu.co/"
+    },
+    {
+      "name": "Corporación Universitaria Piloto De Colombia",
+      "url": "https://www.unipiloto.edu.co/"
+    },
+    {
+      "name": "Fundación Universitaria Ceipa",
+      "url": "https://www.ceipa.edu.co/"
+    },
+    {
+      "name": "Universidad Nacional Abierta y a Distancia",
+      "url": "https://www.unad.edu.co/"
+    },
+    {
+      "name": "Universidad Autónoma Latinoamericana",
+      "url": "https://www.unaula.edu.co/"
+    },
+    {
+      "name": "Universidad EAFIT",
+      "url": "https://www.eafit.edu.co/"
+    },
+    {
+      "name": "Universidad de Medellín",
+      "url": "https://www.udem.edu.co/"
+    },
+    {
+      "name": "Universidad CES",
+      "url": "https://www.ces.edu.co/"
+    },
+    {
+      "name": "Universidad EIA",
+      "url": "https://www.eia.edu.co/"
+    },
+    {
+      "name": "Universidad Pontificia Bolivariana",
+      "url": "https://www.upb.edu.co/"
+    },
+    {
+      "name": "Universidad San Buenaventura",
+      "url": "https://www.usbmed.edu.co/"
+    }
+  ],
+  "public": [
+    {
+      "name": "Universidad Nacional",
+      "url": "https://unal.edu.co/"
+    },
+    {
+      "name": "Universidad de Antioquia",
+      "url": "https://www.udea.edu.co/"
+    },
+    {
+      "name": "Instituto Tecnológico Metropolitano - ITM",
+      "url": "https://www.itm.edu.co/"
+    },
+    {
+      "name": "Tecnológico de Antioquia",
+      "url": "https://www.tdea.edu.co/"
+    },
+    {
+      "name": "Colegio Mayor De Antioquia",
+      "url": "https://www.colmayor.edu.co/"
+    },
+    {
+      "name": "Institución Universitaria De Envigado",
+      "url": "https://www.iue.edu.co/"
+    },
+    {
+      "name": "Institución Universitaria Pascual Bravo",
+      "url": "https://www.pascualbravo.edu.co/"
+    },
+    {
+      "name": "Politécnico Colombiano Jaime Isaza Cadavid",
+      "url": "https://www.politecnicojic.edu.co/"
+    }
+  ]
+}

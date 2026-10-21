@@ -1,0 +1,36 @@
+{
+  "scholarships": [
+    {
+      "id": "matricula-0-2023",
+      "title": "Información de matrícula 0 2023",
+      "description": "Conoce los detalles del programa de matrícula cero para el año 2023",
+      "videoUrl": "https://www.youtube.com/embed/VJ7JBvXLVTM",
+      "type": "government",
+      "institution": "Gobierno Nacional"
+    },
+    {
+      "id": "eafit-becas-talento",
+      "title": "Universidad EAFIT - Becas Talento",
+      "description": "Programa de becas por excelencia académica de la Universidad EAFIT",
+      "videoUrl": "https://www.youtube.com/embed/vcK6n8l6jfA",
+      "type": "academic",
+      "institution": "Universidad EAFIT"
+    },
+    {
+      "id": "icetex-becas",
+      "title": "ICETEX - Créditos y Becas",
+      "description": "Opciones de financiamiento y becas del ICETEX para educación superior",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "type": "government",
+      "institution": "ICETEX"
+    },
+    {
+      "id": "upe-becas-deportivas",
+      "title": "Becas Deportivas Universidad de Antioquia",
+      "description": "Programa de becas para deportistas de alto rendimiento",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "type": "sports",
+      "institution": "Universidad de Antioquia"
+    }
+  ]
+}

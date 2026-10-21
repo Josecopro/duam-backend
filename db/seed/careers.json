@@ -1,0 +1,144 @@
+{
+  "categories": [
+    {
+      "id": "ingenierias",
+      "name": "Ingenierías",
+      "icon": "⚙️",
+      "image": "/images/wIbAFgE.png",
+      "description": "Programas de ingeniería en diversas especialidades",
+      "subcategories": [
+        "Ingeniería de Sistemas",
+        "Ingeniería Civil",
+        "Ingeniería Electrónica",
+        "Ingeniería Industrial",
+        "Ingeniería Mecánica",
+        "Ingeniería Química",
+        "Ingeniería Ambiental",
+        "Ingeniería de Telecomunicaciones"
+      ],
+      "tone": "primary",
+      "symbol": "code",
+      "summary": "Programas de ingeniería en diversas especialidades. Formación técnica de alto nivel para resolver problemas complejos."
+    },
+    {
+      "id": "salud",
+      "name": "Salud",
+      "icon": "🏥",
+      "image": "/images/xKfFKiN.png",
+      "description": "Carreras del área de la salud y ciencias médicas",
+      "subcategories": [
+        "Medicina",
+        "Enfermería",
+        "Odontología",
+        "Fisioterapia",
+        "Nutrición y Dietética",
+        "Psicología",
+        "Bacteriología",
+        "Instrumentación Quirúrgica"
+      ],
+      "tone": "success",
+      "symbol": "check-circle",
+      "summary": "Carreras del área de la salud y ciencias médicas. Formación para el cuidado y bienestar de las personas."
+    },
+    {
+      "id": "humanidades",
+      "name": "Humanidades",
+      "icon": "📚",
+      "image": "/images/E4QLfTd.jpg",
+      "description": "Estudios humanísticos y ciencias sociales",
+      "subcategories": [
+        "Filosofía",
+        "Historia",
+        "Literatura",
+        "Lingüística",
+        "Comunicación Social",
+        "Periodismo",
+        "Artes Plásticas",
+        "Diseño Gráfico"
+      ],
+      "tone": "accent",
+      "symbol": "file-text",
+      "summary": "Estudios humanísticos y ciencias sociales. Formación en pensamiento crítico, cultura y comunicación."
+    },
+    {
+      "id": "educacion",
+      "name": "Educación",
+      "icon": "🎓",
+      "image": "/images/STaJkul.jpg",
+      "description": "Licenciaturas y pedagogía",
+      "subcategories": [
+        "Licenciatura en Educación Infantil",
+        "Licenciatura en Educación Básica Primaria",
+        "Licenciatura en Matemáticas",
+        "Licenciatura en Inglés",
+        "Licenciatura en Ciencias Naturales",
+        "Licenciatura en Educación Física",
+        "Pedagogía",
+        "Psicopedagogía"
+      ],
+      "tone": "secondary",
+      "symbol": "check-circle",
+      "summary": "Licenciaturas y pedagogía. Formación de docentes para transformar la educación en Colombia."
+    },
+    {
+      "id": "cienciasbasicas",
+      "name": "Ciencias Básicas",
+      "icon": "🔬",
+      "image": "/images/NptjAAJ.jpg",
+      "description": "Ciencias puras y aplicadas",
+      "subcategories": [
+        "Matemáticas",
+        "Física",
+        "Química",
+        "Biología",
+        "Estadística",
+        "Geología",
+        "Astronomía",
+        "Bioquímica"
+      ],
+      "tone": "primary",
+      "symbol": "globe",
+      "summary": "Ciencias puras y aplicadas. Formación en investigación científica, método experimental y pensamiento analítico."
+    },
+    {
+      "id": "cienciassociales",
+      "name": "Ciencias Sociales y Derecho",
+      "icon": "⚖️",
+      "image": "/images/GSpCIQC.jpg",
+      "description": "Derecho, ciencias políticas y sociales",
+      "subcategories": [
+        "Derecho",
+        "Ciencia Política",
+        "Sociología",
+        "Antropología",
+        "Economía",
+        "Administración Pública",
+        "Relaciones Internacionales",
+        "Trabajo Social"
+      ],
+      "tone": "accent",
+      "symbol": "file-text",
+      "summary": "Derecho, ciencias políticas y sociales. Formación para la justicia, la gestión pública y el análisis social."
+    },
+    {
+      "id": "servicios",
+      "name": "Servicios",
+      "icon": "🛎️",
+      "image": "/images/wIbAFgE.png",
+      "description": "Hotelería, turismo y servicios",
+      "subcategories": [
+        "Administración Hotelera",
+        "Turismo",
+        "Gastronomía",
+        "Administración de Empresas Turísticas",
+        "Guianza Turística",
+        "Eventos y Convenciones",
+        "Gestión de Servicios",
+        "Recreación y Deporte"
+      ],
+      "tone": "secondary",
+      "symbol": "check-circle",
+      "summary": "Hotelería, turismo y servicios. Formación en hospitalidad, gastronomía, gestión turística y recreación."
+    }
+  ]
+}
