@@ -1,0 +1,129 @@
+// Modelo de datos de DUAM (Prisma 7). Cambios: editar aquí y correr `npm run db:migrate`.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  admin
+  user
+}
+
+model User {
+  id        Int           @id @default(autoincrement())
+  name      String        @db.VarChar(120)
+  email     String        @unique @db.VarChar(254)
+  /// Hash bcrypt. Nunca se devuelve en una respuesta.
+  password  String
+  role      Role          @default(user)
+  createdAt DateTime      @default(now()) @map("created_at")
+  requests  PqrsRequest[]
+
+  @@map("users")
+}
+
+// ── Catálogo 1: universidades ──────────────────────────────────────────────
+
+enum UniversityType {
+  private
+  public
+}
+
+model University {
+  id        Int            @id @default(autoincrement())
+  name      String         @unique @db.VarChar(160)
+  url       String         @db.VarChar(300)
+  type      UniversityType
+  createdAt DateTime       @default(now()) @map("created_at")
+  updatedAt DateTime       @updatedAt @map("updated_at")
+  requests  PqrsRequest[]
+
+  @@index([type])
+  @@map("universities")
+}
+
+// ── Catálogo 2: áreas de carreras ──────────────────────────────────────────
+
+enum Tone {
+  primary
+  secondary
+  success
+  accent
+}
+
+model Career {
+  /// Slug usado en la URL (/carreras/<id>).
+  id          String   @id @db.VarChar(60)
+  name        String   @db.VarChar(120)
+  icon        String   @db.VarChar(16)
+  image       String   @db.VarChar(300)
+  description String   @db.VarChar(300)
+  summary     String   @db.VarChar(600)
+  tone        Tone
+  symbol      String   @db.VarChar(40)
+  programs    String[]
+  sort        Int      @default(0)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("careers")
+}
+
+// ── Becas (solo lectura) ───────────────────────────────────────────────────
+
+enum ScholarshipType {
+  government
+  academic
+  sports
+}
+
+model Scholarship {
+  id          String          @id @db.VarChar(80)
+  title       String          @db.VarChar(200)
+  description String          @db.VarChar(600)
+  videoUrl    String          @map("video_url") @db.VarChar(300)
+  type        ScholarshipType
+  institution String          @db.VarChar(160)
+  sort        Int             @default(0)
+
+  @@map("scholarships")
+}
+
+// ── Interacción: solicitud PQRS de un usuario sobre una universidad ────────
+
+enum RequestType {
+  peticion
+  queja
+  reclamo
+  sugerencia
+}
+
+enum RequestStatus {
+  new
+  in_progress
+  closed
+}
+
+model PqrsRequest {
+  id           Int           @id @default(autoincrement())
+  type         RequestType
+  message      String        @db.VarChar(5000)
+  status       RequestStatus @default(new)
+  /// Siempre el usuario del token, nunca el del body.
+  userId       Int           @map("user_id")
+  universityId Int           @map("university_id")
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// Restrict: no se puede borrar una universidad con solicitudes (la API responde 409).
+  university   University    @relation(fields: [universityId], references: [id], onDelete: Restrict)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([universityId])
+  @@map("pqrs_requests")
+}

@@ -1,5 +1,5 @@
 // Servidor local (en Vercel se usa directamente el export de app.ts).
 import app from "./app.js";
+import { env } from "./infrastructure/config/env.js";
 
-const port = Number(process.env.PORT ?? 4000);
-app.listen(port, () => console.log(`API de DUAM en http://localhost:${port}`));
+app.listen(env.port, () => console.log(`API de DUAM en http://localhost:${env.port}`));
