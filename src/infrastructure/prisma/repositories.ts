@@ -12,6 +12,23 @@ import { translate } from "./errors.js";
 
 const skipTake = ({ page, limit }: PageQuery) => ({ skip: (page - 1) * limit, take: limit });
 
+// Búsqueda sin distinguir mayúsculas ni tildes ("medellin" encuentra "Medellín"), sin extensiones de Postgres.
+const ACCENTED = "áàäâãéèëêíìïîóòöôõúùüûñç";
+const PLAIN = "aaaaaeeeeiiiiooooouuuunc";
+const fold = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "");
+
+async function idsMatchingName(q: string): Promise<number[]> {
+  // Los comodines de LIKE que escriba el usuario se buscan como texto literal.
+  const pattern = `%${fold(q).replace(/[\\%_]/g, (c) => `\\${c}`)}%`;
+  const rows = await prisma.$queryRaw<{ id: number }[]>`
+    SELECT id FROM universities WHERE translate(lower(name), ${ACCENTED}, ${PLAIN}) LIKE ${pattern}`;
+  return rows.map((r) => r.id);
+}
+
 export const userRepository: UserRepository = {
   findByEmail: (email) => prisma.user.findUnique({ where: { email } }) as Promise<User | null>,
   findById: (id) => prisma.user.findUnique({ where: { id } }) as Promise<User | null>,
@@ -26,7 +43,7 @@ export const universityRepository: UniversityRepository = {
   async list(query, { type, q }: UniversityFilters) {
     const where: Prisma.UniversityWhereInput = {
       ...(type && { type }),
-      ...(q && { name: { contains: q, mode: "insensitive" } }),
+      ...(q && { id: { in: await idsMatchingName(q) } }),
     };
     const [data, total] = await prisma.$transaction([
       prisma.university.findMany({ where, select: universitySelect, orderBy: [{ type: "asc" }, { name: "asc" }], ...skipTake(query) }),

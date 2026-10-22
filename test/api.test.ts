@@ -121,6 +121,9 @@ describe("catálogo: universidades", () => {
     assert.equal((await call("GET", "/universidades?type=public&limit=50")).json.pagination.total, 8);
     const res = await call("GET", "/universidades?q=medell");
     assert.deepEqual(res.json.data.map((u: Json) => u.name), ["Universidad de Medellín"]);
+    const noAccent = await call("GET", "/universidades?q=MEDELLIN");
+    assert.deepEqual(noAccent.json.data.map((u: Json) => u.name), ["Universidad de Medellín"], "sin distinguir tildes ni mayúsculas");
+    assert.equal((await call("GET", "/universidades?q=%25")).json.pagination.total, 0, "% se busca como texto, no como comodín");
   });
 
   test("query inválida: 400", async () => {
