@@ -1,0 +1,26 @@
+# Blueprint de Render: Dashboard → New → Blueprint → este repositorio.
+# Las variables con sync: false se piden al crear el Blueprint (no se guardan aquí).
+services:
+  - type: web
+    name: duam-api
+    runtime: node
+    plan: free
+    branch: main
+    autoDeploy: true
+    # Aplica migraciones pendientes en cada deploy (no-op si la base ya está al día).
+    buildCommand: npm ci && npm run db:deploy
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_URL_UNPOOLED
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 2h
+      - key: CORS_ORIGINS
+        value: https://desarrollo-web-seven-tau.vercel.app

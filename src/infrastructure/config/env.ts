@@ -1,7 +1,7 @@
 // Lee y valida las variables de entorno una sola vez. Si falta algo crítico, la app no arranca.
 function required(name: string): string {
   const value = process.env[name];
-  if (!value) throw new Error(`Falta la variable de entorno ${name} (ver backend/.env.example)`);
+  if (!value) throw new Error(`Falta la variable de entorno ${name} (ver .env.example)`);
   return value;
 }
 
