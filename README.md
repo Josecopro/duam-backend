@@ -6,7 +6,7 @@ DUAM reúne en un solo lugar la oferta de educación superior del Área Metropol
 |---|---|
 | API (Render) | **https://duam-api.onrender.com/api** (p. ej. [`/api/universidades`](https://duam-api.onrender.com/api/universidades)) |
 | Frontend (Vercel) | **https://desarrollo-web-seven-tau.vercel.app** |
-| Repositorio del frontend | https://github.com/Josecopro/duam-frontend |
+| Repositorio del frontend | https://github.com/Josecopro/DesarrolloWeb (guarda frontend y backend, pero funciona como el repositorio del frontend) |
 
 > Plan gratuito de Render: si la API lleva ~15 min sin tráfico se suspende y la primera petición tarda unos 50 s en despertarla.
 
@@ -105,7 +105,7 @@ Errores siempre como `{ error, details? }` (`details` = errores por campo), sin 
 
 ### Flujo completo de un login
 
-1. **Formulario** (`duam-frontend/src/features/auth/components/LoginForm.tsx`): valida en el cliente que el correo tenga formato válido y que la contraseña no esté vacía. Si hay errores, se muestran debajo de cada campo y no se envía nada.
+1. **Formulario** (`DesarrolloWeb/frontend/src/features/auth/components/LoginForm.tsx`): valida en el cliente que el correo tenga formato válido y que la contraseña no esté vacía. Si hay errores, se muestran debajo de cada campo y no se envía nada.
 2. **Hook y servicio**: `useAuth().login()` llama a `authService.login()` (`features/auth/services/auth.service.ts`), que usa el cliente HTTP único `features/common/http.ts` para hacer `POST https://duam-api.onrender.com/api/auth/login` con `{ email, password }`.
 3. **API**: el router (`src/interface/http/routes/index.ts`) pasa la petición al controlador, que valida el body con zod (400 si es inválido) y llama al caso de uso `login` (`src/application/auth.ts`). Este busca el usuario por email con Prisma y compara la contraseña con el hash usando **bcrypt**. Si el email no existe, igual compara contra un hash de relleno, para que el tiempo de respuesta no delate qué cuentas existen. Si algo falla, responde **401 "Correo o contraseña incorrectos"**, el mismo mensaje en ambos casos.
 4. **Token**: si las credenciales son válidas, `jwtTokenService.sign()` firma un JWT HS256 con `JWT_SECRET` y `expiresIn = JWT_EXPIRES_IN` (2h). El payload solo lleva `{ id, role }`. La respuesta es `{ token, user }`, donde `user` nunca incluye la contraseña.
